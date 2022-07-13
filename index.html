@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="container">
+      <form
+        id="form"
+        class="form"
+        onsubmit="return validate()"
+        action="login.html"
+      >
+        <h2>Register</h2>
+
+        <div class="form-control" onkeyup="checkFullName(fullName)">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullName" placeholder="Full Name" maxlength="30"/>
+          <small>Error Message</small>
+        </div>
+
+        <div class="form-control" onkeyup="checkFirstName(fname)">
+          <label for="username">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            placeholder="First Name"
+            onkeypress="return avoidSpace(event)"
+            maxlength="15"
+          />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control" onkeyup="checkLastName(lastName)">
+          <label for="username">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            placeholder="Last Name"
+            onkeypress="return avoidSpace(event)"
+            maxlength="15"
+          />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control" onkeyup="checkUserId(userId)">
+          <label for="username">UserId</label>
+          <input
+            type="text"
+            id="userId"
+            maxlength="15"
+            placeholder="userId"
+            onkeypress="return avoidSpace(event)"
+            
+          />
+          <small>Error Message</small>
+        </div>
+        <div class="form-control" onkeyup="checkEmail(email)">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            placeholder="Enter email"
+            onkeypress="return avoidSpace(event)"
+            maxlength="30"
+          />
+          <small>Error Message</small>
+        </div>
+
+        <div class="form-control" onkeyup="checkPhoneNumber(phoneInputField)">
+          <div><label>User Mobile Number</label></div>
+          <input class="inputClass" id="inMob" type="number" name="inMob"
+              onkeyup=""/>
+          <ul style="list-style:none;">
+              <li id="mobileValid"></li>
+          </ul>
+      </div>
+        
+        <div class="form-control" onkeyup="checkPassword(password)">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            onkeypress="return avoidSpace(event)"
+            maxlength="16"
+          />
+          <small>Error Message</small>
+        </div>
+        
+        <div
+          class="form-control"
+          onkeyup="checkPasswordsMatch(password,password2)"
+        >
+          <label for="password2">Confirm Password</label>
+          <input
+            type="password"
+            id="password2"
+            placeholder="Enter password again"
+            onkeypress="return avoidSpace(event)"
+            maxlength="16"
+          />
+          <small>Error Message</small>
+        </div>
+
+        <div class="form-control">
+          <label for="profession">Select Profession:</label>
+          <select id="professions" required>
+            <option value=""></option>
+            <option value="1">Student</option>
+            <option value="2">Employed</option>
+            <option value="3">Unempoyed</option>
+          </select>
+        </div>
+
+        <div class="form-control">
+          <label id="genderLabel">Gender:</label>
+          <div id="genderSubDiv1">
+            <input
+              type="radio"
+              name="gender"
+              id="radio1"
+              value="Male"
+              onclick="isGenderSelected()"
+              
+            />
+            <label for="radio1">Male</label>
+          </div>
+          <div id="genderSubDiv2">
+            <input
+              type="radio"
+              name="gender"
+              id="radio2"
+              value="Female"
+              onclick="isGenderSelected()"
+            />
+            <label for="radio2">Female</label>
+          </div>
+          <div id="genderSubDiv3">
+            <input
+              type="radio"
+              name="gender"
+              id="radio3"
+              value="Other"
+              onclick="isGenderSelected()"
+            />
+            <label for="radio3">Other</label>
+          </div>
+          <p id="showGenderError"></p>
+        </div>
+        <div class="form-control" onkeyup="checkurl(url)">
+          <label for="url">Profile URL</label>
+          <input
+            type="link"
+            id="url"
+            placeholder="https://example.com"
+            onkeypress="return avoidSpace(event)"
+            required
+          />
+        </div>
+        <div class="form-control">
+          <label>Upload an Image(.jpeg/.jpg/.png/.gif)</label>
+          <input type="file" id="imagefile" id="imagefile" onchange="return imageValidation()" />
+          <div id="imagePreview"></div>
+        </div>
+        <div class="form-control">
+          <label>Upload an File(.pdf/.docx/.xlsx/.csv)</label>
+          <input type="file" id="docfile" id="docfile" onchange="return fileValidation()"/>
+        </div>
+        <div class="form-control" onkeyup="checktextfeild(textfeild)">
+          <label>About Yourself</label>
+          <textarea id="inputFeild" cols="50" rows="3" maxlength="200" placeholder="Minimum 50 characters necessary"></textarea>
+        </div>
+        <div class="">
+          <label for="accept">
+            <input
+              type="checkbox"
+              id="accept"
+              name="accept"
+              value="yes"
+              required
+
+            />
+            Accept Terms and Conditions
+          </label>
+        </div>
+        <button>Submit</button>
+      </form>
+      <p>
+        Already Have Account<span><a href="login.html">Login</a></span>
+      </p>
+    </div>
+    <script src="index2.js"></script>
+  </body>
+</html>
